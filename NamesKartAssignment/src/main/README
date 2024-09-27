@@ -1,0 +1,46 @@
+# SocialMediaChecker
+
+`SocialMediaChecker` is a simple Java command-line utility to check the activity status of a company's social media profiles based on their domain name. It currently supports LinkedIn, Facebook, and Instagram.
+
+## Features
+
+- Checks if the LinkedIn, Facebook, and Instagram profiles for a company are active.
+- Uses the domain name to infer the company name and checks social media profiles accordingly.
+- Reports the status of each social media profile.
+
+## Prerequisites
+
+- Java Development Kit (JDK) 8 or higher installed on your system.
+
+## How It Works
+
+Given a domain name as input, `SocialMediaChecker`:
+
+1. Extracts the company name from the domain (the portion before the first `.`).
+2. Constructs URLs for LinkedIn, Facebook, and Instagram using the inferred company name.
+3. Sends a GET request to each URL.
+4. If the profile page is accessible (HTTP 200), it's marked as "Active".
+5. If the profile page is not found (HTTP 404), it's marked as "Unable to determine".
+6. For other HTTP response codes, the profile status is also marked as "Unable to determine".
+
+## Usage
+
+To use `SocialMediaChecker`, compile and run the program using the following commands:
+
+### Compile the program
+
+```sh
+javac -d out src/org/example/SocialMediaChecker.java
+java -cp out org.example.SocialMediaChecker <domain>
+java -cp out org.example.SocialMediaChecker apple.com
+Results for example.com:
+https://www.linkedin.com/company/example: Active
+https://www.facebook.com/example: Unable to determine
+https://www.instagram.com/example: Active
+```
+
+### Additional Notes
+
+- Customize the "Limitations" section according to any additional constraints or known issues in your application.
+- If you expand the tool to include more features or support additional platforms, update the README accordingly.
+
